@@ -76,10 +76,19 @@ async function convertImage(inputFilname, outputFilname) {
 // })();
 
 const app = express();
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // 允许所有来源
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"); // 允许的请求方法
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization"); // 允许的请求头
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204); // 预检请求（OPTIONS）直接返回 204
+  }
+  next();
+});
 app.use(
   cors({
-    origin: "http://localhost:8088", // 只允许 Vue 访问
-    credentials: true, // 允许跨域携带 Cookie 或认证信息
+    origin: "*",
+    optionsSuccessStatus: 204,
   })
 );
 
@@ -114,9 +123,13 @@ app.post("/api/upload", upload.single("image"), async (req, res) => {
   });
 });
 
+app.get("/api/upload/get", (req, res) => {
+  res.json({ message: "成功" });
+});
+
 // 启动服务器
 const PORT = 3000;
 app.use("/images", express.static(path.join(__dirname, "converted-images"))); //自带  托管静态文件
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log("您正在监听", `http://localhost:3000`);
 });

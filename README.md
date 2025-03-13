@@ -1,13 +1,21 @@
 # Node Squoosh Example
+
 See more at https://github.com/GoogleChromeLabs/squoosh/tree/dev/libsquoosh
 
+# Example
+
+See more at http://47.121.200.80:8088/demo/
+
 ## Local Setup
+
 - `$ git clone https://github.com/rveitch/node-squoosh-example.git`
 - `$ npm install`
 - Run `$ npm start` to initialize the app.
 
 ## Output
+
 This example will log each step and give a before/after comparison similar to:
+
 ```
 Image Decoding Complete
 Image Pre-Processing Complete
