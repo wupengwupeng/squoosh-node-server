@@ -8,7 +8,7 @@ See more at http://47.121.200.80:8088/demo/
 
 ## Local Setup
 
-- `$ git clone https://github.com/rveitch/node-squoosh-example.git`
+- `$ git clone https://github.com/wupengwupeng/squoosh-node-server.git`
 - `$ npm install`
 - Run `$ npm start` to initialize the app.
 
